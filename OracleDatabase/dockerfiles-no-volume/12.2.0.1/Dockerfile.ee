@@ -71,7 +71,12 @@ RUN $ORACLE_BASE/oraInventory/orainstRoot.sh && \
 USER oracle
 WORKDIR /home/oracle
 
-VOLUME ["$ORACLE_BASE/oradata"]
+# Commented out to disable volume storage; this results in data being 
+# stored in the container. With Docker version 17.10.0-ce, build f4ffd25
+# data in the container results in Docker for Mac hanging when large 
+# images are loaded (with docker load -i ...tar), so the standard volume-based
+# approach has to be used
+# VOLUME ["$ORACLE_BASE/oradata"]
 EXPOSE 1521 5500
 HEALTHCHECK --interval=1m --start-period=5m \
    CMD "$ORACLE_BASE/$CHECK_DB_FILE" >/dev/null || exit 1
