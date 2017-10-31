@@ -115,7 +115,7 @@ else
 fi
 
 # Oracle Database Image Name
-IMAGE_NAME="oracle/database:$VERSION-$EDITION"
+IMAGE_NAME="oracle/database:$VERSION-$EDITION-no-volume"
 
 # Go into version folder
 cd $VERSION
